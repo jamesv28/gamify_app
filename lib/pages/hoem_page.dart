@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import "../data.dart";
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _HomePageState();
@@ -24,9 +26,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       body: Stack(
-        children: <Widget>[
-          _featuredGameWidget(),
-        ],
+        children: <Widget>[_featuredGameWidget(), _gradientBoxWidget()],
       ),
     );
   }
@@ -47,6 +47,25 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         }).toList(),
+      ),
+    );
+  }
+
+  Widget _gradientBoxWidget() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        height: _deviceHeight * 0.80,
+        width: _deviceWidth,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: [
+            Color.fromRGBO(35, 45, 59, 1.0),
+            Colors.transparent,
+          ], stops: [
+            0.65,
+            1.0
+          ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
+        ),
       ),
     );
   }
