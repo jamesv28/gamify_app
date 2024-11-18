@@ -8,7 +8,7 @@ class GameImage {
 class Game {
   String title;
   GameImage coverImage;
-  List<GameImage> images;
+  List<GameImage> images = [];
   String description;
   String studio;
 
@@ -103,7 +103,7 @@ List<Game> featuredGames = [
   Game(
     "Dragon Ball Z: Kakarot",
     GameImage(
-        "https://cdn3.dualshockers.com/wp-content/uploads/2020/01/dbx-kakarot.png",
+        "https://store-images.s-microsoft.com/image/apps.39852.14455250034361967.824623c3-91b6-402f-9a68-c66bfac9bc20.7bfae929-5b2a-4efe-9639-5ffd1e2de297?q=90&w=480&h=270",
         ""),
     "",
     "CyberConnect2",
