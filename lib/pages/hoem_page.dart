@@ -14,7 +14,6 @@ class _HomePageState extends State<HomePage> {
   var _deviceHeight;
   var _deviceWidth;
 
-  @override
   void initialState() {
     super.initState();
   }
@@ -26,7 +25,11 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       body: Stack(
-        children: <Widget>[_featuredGameWidget(), _gradientBoxWidget()],
+        children: <Widget>[
+          _featuredGameWidget(),
+          _gradientBoxWidget(),
+          _topLayerWidget(),
+        ],
       ),
     );
   }
@@ -66,6 +69,46 @@ class _HomePageState extends State<HomePage> {
             1.0
           ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
         ),
+      ),
+    );
+  }
+
+  Widget _topLayerWidget() {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: _deviceWidth * 0.05,
+        vertical: _deviceHeight * 0.005,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          _topBarWidget(),
+        ],
+      ),
+    );
+  }
+
+  Widget _topBarWidget() {
+    return SizedBox(
+      height: _deviceHeight * 0.13,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          const Icon(Icons.menu, color: Colors.white, size: 30),
+          Row(
+            children: <Widget>[
+              const Icon(Icons.search, color: Colors.white, size: 30),
+              SizedBox(
+                width: _deviceWidth * 0.03,
+              ),
+              const Icon(Icons.notifications, color: Colors.white, size: 30),
+            ],
+          )
+        ],
       ),
     );
   }
