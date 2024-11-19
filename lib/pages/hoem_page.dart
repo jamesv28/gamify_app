@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var _deviceHeight;
   var _deviceWidth;
+  var _selectedPage = 0;
 
   void initialState() {
     super.initState();
@@ -39,6 +40,11 @@ class _HomePageState extends State<HomePage> {
       height: _deviceHeight * 0.50,
       width: _deviceWidth,
       child: PageView(
+        onPageChanged: (index) {
+          setState(() {
+            _selectedPage = index;
+          });
+        },
         scrollDirection: Axis.horizontal,
         children: featuredGames.map((game) {
           return Container(
@@ -85,6 +91,7 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           _topBarWidget(),
+          _featuredGamesInfoWidget(),
         ],
       ),
     );
@@ -108,6 +115,41 @@ class _HomePageState extends State<HomePage> {
               const Icon(Icons.notifications, color: Colors.white, size: 30),
             ],
           )
+        ],
+      ),
+    );
+  }
+
+  Widget _featuredGamesInfoWidget() {
+    return SizedBox(
+      height: _deviceHeight * 0.12,
+      width: _deviceWidth,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            featuredGames[_selectedPage].title,
+            maxLines: 2,
+            style:
+                TextStyle(color: Colors.white, fontSize: _deviceHeight * 0.040),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: featuredGames.map((game) {
+              double circleRadius = _deviceHeight * 0.004;
+              return Container(
+                height: circleRadius * 2,
+                width: circleRadius * 2,
+                decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(100)),
+              );
+            }).toList(),
+          ),
         ],
       ),
     );
