@@ -96,7 +96,11 @@ class _HomePageState extends State<HomePage> {
             height: _deviceHeight * 0.13,
           ),
           _featuredGamesInfoWidget(),
-          ScrollableGamesWidget(_deviceHeight * 0.24, _deviceWidth, true, games)
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: _deviceHeight * 0.01),
+            child: ScrollableGamesWidget(
+                _deviceHeight * 0.24, _deviceWidth, true, games),
+          )
         ],
       ),
     );
