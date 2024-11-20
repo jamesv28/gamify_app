@@ -100,7 +100,8 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.symmetric(vertical: _deviceHeight * 0.01),
             child: ScrollableGamesWidget(
                 _deviceHeight * 0.24, _deviceWidth, true, games),
-          )
+          ),
+          _featuredGameBanner(),
         ],
       ),
     );
@@ -164,6 +165,20 @@ class _HomePageState extends State<HomePage> {
             }).toList(),
           )
         ],
+      ),
+    );
+  }
+
+  Widget _featuredGameBanner() {
+    return Container(
+      height: _deviceHeight * 0.13,
+      width: _deviceWidth,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: NetworkImage(featuredGames[3].coverImage.url),
+        ),
       ),
     );
   }
