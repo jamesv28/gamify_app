@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "../data.dart";
+import '../widgets/scrolable_games.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -95,6 +96,7 @@ class _HomePageState extends State<HomePage> {
             height: _deviceHeight * 0.13,
           ),
           _featuredGamesInfoWidget(),
+          ScrollableGamesWidget(_deviceHeight * 0.24, _deviceWidth, true, games)
         ],
       ),
     );
@@ -131,16 +133,14 @@ class _HomePageState extends State<HomePage> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           Text(
             featuredGames[_selectedPage].title,
             maxLines: 2,
             style:
-                TextStyle(color: Colors.white, fontSize: _deviceHeight * 0.040),
+                TextStyle(color: Colors.white, fontSize: _deviceHeight * 0.035),
           ),
-          SizedBox(
-            height: _deviceHeight * 0.01,
-          ),
+          SizedBox(height: _deviceHeight * 0.01),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -153,11 +153,12 @@ class _HomePageState extends State<HomePage> {
                 height: circleRadius * 2,
                 width: circleRadius * 2,
                 decoration: BoxDecoration(
-                    color: isActive ? Colors.green : Colors.grey,
-                    borderRadius: BorderRadius.circular(100)),
+                  color: isActive ? Colors.green : Colors.grey,
+                  borderRadius: BorderRadius.circular(100),
+                ),
               );
             }).toList(),
-          ),
+          )
         ],
       ),
     );
